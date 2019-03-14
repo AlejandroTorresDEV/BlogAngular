@@ -15,10 +15,16 @@ export class LoginComponent{
   constructor(private router:Router, private api:ServicioAuthService) { }
 
   login(){
+     const {username,password} = this
     if (this.username !== undefined && this.password !== undefined){
-      const {username,password} = this;
-
+      this.api.login(username.trim(),password.trim()).then(res=>{
+        console.log(res);
+        this.router.navigate(['/home']);
+      }) .catch(err=>{
+        console.log(err);
+      })
     }
+    
   }
 
  

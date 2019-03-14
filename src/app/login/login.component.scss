@@ -1,0 +1,27 @@
+.contenedor{
+    display: flex;
+    justify-content: center;
+    .formulario{
+        display: flex;
+        flex-direction: column;
+        background: white;
+        padding: 2em;
+        border-radius: 2em;
+
+        
+        input{
+            all: unset;
+            border-bottom: 1px solid grey;
+            margin: 0.5em;
+            text-align: center;
+        }
+        button{
+            all: unset;
+            margin: 0.5em;
+            border: 2px solid black;
+            border-radius: 1em;
+            background: green; 
+            text-align: center;
+        }
+    }
+}
