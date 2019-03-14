@@ -17,8 +17,9 @@ export class ServicioAuthService {
 
   constructor() { }
 
-  registerUser(){
-
+  registerUser(newUser : Users){
+      this.dataUsers.Users.push(newUser);
+      console.log(this.dataUsers);
   }
   
 }

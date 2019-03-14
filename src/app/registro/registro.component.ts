@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ServicioAuthService } from "../servicios/servicio-auth.service";
+import { Users } from '../interfaces/users';
 
 @Component({
   selector: 'app-registro',
@@ -47,7 +48,12 @@ export class RegistroComponent implements OnInit {
     console.log("Email -> "+this.email+" Username -> "+this.username+" Password ->"+this.password);
 
     //Si todo es correcto llamamos al metodo del servicio
-    this.authService.registerUser();
+    const newUser: Users = {
+      username : this.username,
+      password : this.password
+    };
+
+    this.authService.registerUser(newUser);
   }
 
   getFormsControls(): any {
