@@ -46,6 +46,7 @@ export class RegistroComponent implements OnInit {
 
     console.log("Email -> "+this.email+" Username -> "+this.username+" Password ->"+this.password);
 
+    //Si todo es correcto llamamos al metodo del servicio
     this.authService.registerUser();
   }
 
