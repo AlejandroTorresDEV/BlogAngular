@@ -17,7 +17,7 @@ export class RegistroComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder,private router: Router, ) { }
+  constructor(private formBuilder: FormBuilder,private router: Router,private authService: ServicioAuthService ) { }
 
   ngOnInit() {
     this.generateRegisterFormModel();
@@ -46,6 +46,7 @@ export class RegistroComponent implements OnInit {
 
     console.log("Email -> "+this.email+" Username -> "+this.username+" Password ->"+this.password);
 
+    this.authService.registerUser();
   }
 
   getFormsControls(): any {
