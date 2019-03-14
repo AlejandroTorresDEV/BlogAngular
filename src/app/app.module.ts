@@ -10,6 +10,7 @@ import { PostsComponent } from './posts/posts.component';
 import { ShowpostsComponent } from './showposts/showposts.component';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
+import { ApiBackComponent } from './api-back/api-back.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { LoginComponent } from './login/login.component';
     PostsComponent,
     ShowpostsComponent,
     RegistroComponent,
-    LoginComponent
+    LoginComponent,
+    ApiBackComponent
   ],
   imports: [
     BrowserModule,
