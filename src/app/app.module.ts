@@ -10,7 +10,8 @@ import { PostsComponent } from './posts/posts.component';
 import { ShowpostsComponent } from './showposts/showposts.component';
 import { RegistroComponent } from './registro/registro.component';
 import { LoginComponent } from './login/login.component';
-import { ApiBackComponent } from './api-back/api-back.component';
+import { ServicioAuthService } from './servicios/servicio-auth.service';
+
 
 @NgModule({
   declarations: [
@@ -21,14 +22,14 @@ import { ApiBackComponent } from './api-back/api-back.component';
     ShowpostsComponent,
     RegistroComponent,
     LoginComponent,
-    ApiBackComponent
+
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ServicioAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiBackComponent } from '../api-back/api-back.component';
+
+import { ServicioAuthService } from '../servicios/servicio-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent{
   username:string;
   password:string;
 
-  constructor(private router:Router, private api:ApiBackComponent) { }
+  constructor(private router:Router, private api:ServicioAuthService) { }
 
   login(){
     if (this.username !== undefined && this.password !== undefined){
