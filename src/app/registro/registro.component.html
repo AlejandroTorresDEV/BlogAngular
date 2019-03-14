@@ -4,22 +4,22 @@
 <form  [formGroup]="registerForm" (ngSubmit)="registerUser()">
   <h5>Registro de usuario</h5>
 
+  <img *ngIf="fileByte" [src]="fileByte" class="img-thumbnail">
+  <br>
+  <!-- Grupo avatar de usuario. -->
+  <label>Avatar</label>
+    <input type="file" (change)="changeListener($event)" formControlName="file" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && getFormsControls().file.errors }" />
+    <div *ngIf="submitted && getFormsControls().file.errors" class="invalid-feedback">
+      <div *ngIf="getFormsControls().file.errors.required">El avatar es necesario</div>
+    </div>
+
   <!-- Grupo nombre de usuario. -->
   <div class="form-group">
     <label>Nombre de usuario</label>
     <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && getFormsControls().username.errors }" />
     <div *ngIf="submitted && getFormsControls().username.errors" class="invalid-feedback">
       <div *ngIf="getFormsControls().username.errors.required">El nombre de usuario es necesario</div>
-    </div>
-  </div>
-
-  <!-- Grupo email. -->
-  <div class="form-group">
-    <label>Email</label>
-    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && getFormsControls().email.errors }" />
-    <div *ngIf="submitted && getFormsControls().email.errors" class="invalid-feedback">
-      <div *ngIf="getFormsControls().email.errors.required">Email es necesario</div>
-      <div *ngIf="getFormsControls().email.errors.email">No es un email valido</div>
     </div>
   </div>
 

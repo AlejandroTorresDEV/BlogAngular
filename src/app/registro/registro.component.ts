@@ -12,11 +12,16 @@ import { Users } from '../interfaces/users';
 export class RegistroComponent implements OnInit {
 
   username : string;
-  email : string;
   password : string;
+  image ;
 
   registerForm: FormGroup;
   submitted = false;
+
+  //Variables para manejar el fichero del certificado
+  file;
+  fileByte;
+  rutaFichero; 
 
   constructor(private formBuilder: FormBuilder,private router: Router,private authService: ServicioAuthService ) { }
 
@@ -28,8 +33,8 @@ export class RegistroComponent implements OnInit {
   //Modelo del formulario, especificamos las caracteristicas que van a tener cada grupo del formulario.
   generateRegisterFormModel() {
     this.registerForm = this.formBuilder.group({
+      file: [null, Validators.required],
       username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
@@ -41,11 +46,12 @@ export class RegistroComponent implements OnInit {
       return;
     }
 
-    this.email = this.registerForm.value.email;
+    this.image = this.registerForm.value.file;
     this.username = this.registerForm.value.username;
     this.password = this.registerForm.value.password;
 
-    console.log("Email -> "+this.email+" Username -> "+this.username+" Password ->"+this.password);
+    console.log(this.fileByte);
+
 
     //Si todo es correcto llamamos al metodo del servicio
     const newUser: Users = {
@@ -55,6 +61,30 @@ export class RegistroComponent implements OnInit {
 
     this.authService.registerUser(newUser);
   }
+
+   //Capturamos el evento del input file para recoger los datos del usuario.
+   changeListener($event): void {
+    this.readThis($event.target);
+  }
+
+   //Método para leer los datos del certificado
+   readThis(inputValue: any): void {
+    var file: File = inputValue.files[0];
+    var myReader: FileReader = new FileReader();
+
+    //Obtenemos el nombre del fichero.
+    this.rutaFichero = file.name;
+    
+    myReader.readAsDataURL(file);
+
+    //Obtenemos el certificado como bytes.
+    myReader.onloadend = (e) => {
+      this.file = myReader.result;
+      //this.fileByte = this.file.split(',')[1];
+      this.fileByte = this.file;
+    };
+  }
+
 
   getFormsControls(): any {
     return this.registerForm.controls;

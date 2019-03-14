@@ -17,6 +17,7 @@ export class ServicioAuthService {
 
   constructor() { }
 
+  //Metodo para guardar nuevos usuarios en a base de datos.
   registerUser(newUser : Users){
       this.dataUsers.Users.push(newUser);
       console.log(this.dataUsers);
